@@ -1,2 +1,2 @@
-# EP2---J-o-Nunes-Thiago-Godoi
+# EP2---Joao-Nunes-Thiago-Godoi
 Projeto batalha naval - DesSoft
