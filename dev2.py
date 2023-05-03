@@ -10,7 +10,6 @@ def posiciona_frota(dicio):
 def afundados(frota, tabuleiro):
   afundados = 0
   for tipo_navio, quantidade in frota.items():
-    print(tipo_navio)
     if tipo_navio == 'porta-aviões':
       partes_totais = 4
     elif tipo_navio == 'navio-tanque':
@@ -19,7 +18,6 @@ def afundados(frota, tabuleiro):
       partes_totais = 2
     else:
       partes_totais = 1
-    print(partes_totais)
     for navio in quantidade:
       partes_afundadas = 0
       for coordenada in navio:
