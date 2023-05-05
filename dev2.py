@@ -28,3 +28,44 @@ def afundados(frota, tabuleiro):
         if partes_afundadas == partes_totais:
           afundados += 1
   return afundados
+
+armada = {}
+navios_possiveis = {'porta-aviões': [4,1], 'navio-tanque': [3,2], 'contratorpedeiro': [2,3], 'submarino': [1,4]}
+for navio, infos in navios_possiveis.items():
+  nome = navio
+  tamanho = infos[0]
+  quantidade = infos[1]
+  for i in range(0, quantidade):
+    verificado = False
+    while verificado == False:
+      print('Insira as informações referentes ao navio {0} que possui tamanho {1}'.format(navio, infos[0]))
+      linha = input('Escolha a linha: ')
+      coluna = input('Escolha uma coluna: ')
+      if linha == '' or coluna == '':
+        print('Esta posição não está válida!')
+      else:
+        linha = int(linha)
+        coluna = int(coluna)
+        if nome != 'submarino':
+          orientacao_inp = int(input('Digite 1 para orientação vertical ou 2 para horizontal: '))
+          if orientacao_inp == 1:
+            orientacao = 'vertical'
+          else:
+            orientacao = 'horizontal'
+          verificado = posicao_valida(armada, linha, coluna, orientacao, tamanho)
+          if verificado == False:
+            print('Esta posição não está válida!')
+          else:
+            posicao_navio = define_posicoes(linha, coluna, orientacao, tamanho)
+            armada = preenche_frota(armada, navio, linha, coluna, orientacao, tamanho)
+            verificado = True
+        else:
+          orientacao = 'vertical'
+          verificado = posicao_valida(armada, linha, coluna, orientacao, tamanho)
+          if verificado == False:
+            print('Esta posição não está válida!')
+          else:
+            posicao_navio = define_posicoes(linha, coluna, orientacao, tamanho)
+            armada = preenche_frota(armada, navio, linha, coluna, orientacao, tamanho)
+            verificado = True
+print(armada)
